@@ -1,0 +1,472 @@
+/* frontend/src/App.css */
+
+/* frontend/src/App.css */
+
+/* 1. Global Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* CHANGE THIS LINE FROM height: 100% TO min-height: 100% */
+  min-height: 100%; 
+  overflow-x: hidden;
+  background-color: #FDF6EC; 
+}
+
+/* 2. The Main Wrapper */
+/* Update your main wrapper to push content down */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 60px; /* <--- ADD THIS (Adjust number if navbar is taller) */
+}
+
+/* 3. The Main Content Area */
+.main-content {
+  flex: 1; /* This pushes the footer to the bottom if the page content is short */
+  width: 100%;
+  /* If you want padding for your products, put it HERE, not in the wrapper */
+  /* padding: 20px; <--- Optional: Add this if your products touch the edge */
+}
+
+/* --- Keep the rest of your CSS (Navbar, etc.) below this --- */
+/* --- 1. NAVBAR STYLES (Updated for Image Match) --- */
+
+.navbar {
+  /* Keep your colors and layout */
+  background-color: #002b45; 
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* --- CHANGE THIS SECTION --- */
+  position: fixed; /* Changed from sticky to fixed */
+  top: 0;
+  left: 0;
+  width: 100%;     /* Required because fixed elements lose width */
+  box-sizing: border-box; /* Ensures padding doesn't make it wider than 100% */
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* 1. LEFT: Brand Name */
+.navbar-brand {
+  flex: 1; /* Pushes content to the center */
+  color: white; /* The Purple color from your image */
+  font-size: 28px; /* Large size */
+  font-weight: 800; /* Bold */
+  text-decoration: none; /* No underline */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* 2. CENTER: Navigation Links */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* Space between links */
+  list-style: none; /* Removes bullets if using <ul> */
+}
+
+/* 3. RIGHT: Cart & Login */
+/* Targets the container holding Cart/Login to push it to the far right */
+.navbar > div:last-child {
+  flex: 1; /* Takes up equal space as the left side to ensure true centering */
+  display: flex;
+  justify-content: flex-end; /* Aligns items to the far right */
+  align-items: center;
+  gap: 20px;
+}
+
+/* Navigation Link Items (Home, Products, etc.) */
+.nav-item {
+  color: #ffffff; /* White text for better contrast on dark blue */
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Cleaner font per image */
+}
+
+.nav-item:hover {
+  color: #5098e0; /* Turns purple on hover */
+  text-decoration: underline;
+}
+
+/* Logout Button (if used) */
+.btn-logout {
+  background: transparent;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 15px;
+  transition: all 0.3s;
+}
+
+.btn-logout:hover {
+  background-color: #a855f7;
+  border-color: #a855f7;
+  color: white;
+}
+
+/* --- 2. HOME SCREEN STYLES (Unchanged) --- */
+.hero-section {
+  background-color: #002b45;
+  color: #FDF6EC;
+  padding: 90px 20px;
+  text-align: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.btn-shop {
+  background-color: #FDF6EC;
+  color: #002b45;
+  padding: 10px 18px;
+  border-color: black;
+  border-radius: 18px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-shop:hover {
+  transform: scale(1.05);
+}
+
+.section {
+  padding: 80px 20px;
+  min-height: 80vh;
+  background-color: #FDF6EC; /* Cream */
+  color: #34495E;
+}
+
+.section-alt {
+  padding: 80px 20px;
+  min-height: 80vh;
+  background-color: #f4ecd8; /* Slightly darker cream for contrast */
+  color: #34495E;
+}
+
+/* --- 3. PRODUCT CARD STYLES (Unchanged) --- */
+.product-container {
+  text-align: center;
+  padding: 15px;
+  font-size: large;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* Lift effect */
+}
+
+.card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+
+.card-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.btn-add-cart {
+  background-color: #013555;
+  color: #FDF6EC;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.btn-add-cart:hover {
+  background-color: #002b45;
+}
+
+/* --- QUANTITY SELECTOR STYLES --- */
+.qty-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+
+.btn-qty {
+  background-color: #34495E; /* Theme Blue */
+  color: #FDF6EC;            /* Theme Cream */
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-qty:hover {
+  background-color: #002b45; /* Slightly darker on hover */
+}
+
+/* AUTOMATICALLY styling the disabled state */
+.btn-qty:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #95a5a6; /* Grey out the button */
+}
+
+/* --- DROPDOWN MENU --- */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.dropdown-content a, .dropdown-content button {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.dropdown-content a:hover, .dropdown-content button:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.user-name {
+  color: #FDF6EC; /* Cream color */
+  font-weight: bold;
+}
+.footer-bar {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: black; /* or #000000 */
+  color: white; /* or #ffffff */
+  text-align: center;
+  font-size: 0.8rem; /* text-xs is usually 0.75rem (12px) */
+  font-weight: 700; /* font-bold */
+}
+
+/* =========================================
+   AUTH SCREENS (Login & Register)
+   ========================================= */
+
+/* Centers the form on the page */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh; /* Takes up vertical space */
+  padding: 20px;
+}
+
+/* The White Card */
+.form-inner {
+  background-color: #ffffff;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px; /* Prevents it from getting too wide */
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  text-align: center;
+}
+
+.form-inner h1 {
+  margin-bottom: 25px;
+  color: #002840; /* Matches your Navbar */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Input Fields */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left; /* Aligns labels/inputs to left */
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box; /* Critical: keeps padding inside width */
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #002840; /* Highlights blue when typing */
+}
+
+/* The Login Button */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background-color: #002840; /* Theme Blue */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #004060; /* Slightly lighter on hover */
+}
+/* =========================================
+   ABOUT & CONTACT SECTION
+   ========================================= */
+
+.about-container {
+  background-color: #002b45;
+  color: #ffffff;
+  padding: 40px 0 10px 0;
+  width: 100%;
+  margin: 0;
+  display: block;
+  font-family: Arial, sans-serif;
+}
+
+.about-content-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; /* Responsive wrapping */
+  gap: 70px;
+  padding: 0 20px;
+}
+
+/* Left Column */
+.about-section {
+  flex: 2; /* Takes up 2 parts of the space */
+  padding: 0 20px;
+  min-width: 300px; /* Prevents it from getting too squashed */
+}
+
+/* Right Column */
+.contact-section {
+  flex: 1; /* Takes up 1 part of the space */
+  padding: 0 20px; /* Reduced side padding for better fit */
+  min-width: 250px;
+}
+
+.about-heading {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.about-text {
+  color: #e0e0e0; /* Slightly off-white for readability */
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.contact-item {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.contact-icon {
+  font-size: 1.1rem;
+  /* You can add a specific color here if you want the icons to pop, e.g., color: #FFA500; */
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+  .about-content-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .about-section, .contact-section {
+    padding: 0;
+    text-align: center; /* Center text on mobile */
+  }
+
+  .contact-item {
+    justify-content: center; /* Center contact items on mobile */
+  }
+}
